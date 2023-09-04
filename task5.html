@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 5</title>
+    <style>
+      body {
+        background-color: lightgray;
+        font-size: 20px;
+        font-family: 'Times New Roman', Times, serif;
+      }
+      .header {
+        max-width: 1425px;
+        margin: 0 auto;
+        background-color: rgb(31, 199, 131);
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 30px;
+      }
+      .header > p {
+        font-size: 24px;
+      }
+      .content {
+        max-width: 1150px;
+        margin: 10px auto;
+        background-color: rgb(31, 199, 131);
+        border-radius: 10px;
+        text-align: center;
+        padding: 5px 0;
+        font-size: 24px;
+      }
+
+      .btn {
+        max-width: 300px;
+        margin: 30px auto;
+      }
+
+      button {
+        text-decoration: none;
+        color: black;
+        background-color: rgb(167, 209, 211);
+        text-align: center;
+        font-size: 18px;
+        padding: 7px 14px;
+        border-radius: 7px;
+      }
+
+      input {
+        text-decoration: none;
+        color: black;
+        background-color: rgb(167, 209, 211);
+        margin: 14px 0px;
+        font-size: 15px;
+        padding: 7px 14px;
+        border-radius: 7px;
+      }
+
+      table,
+      tr,
+      td {
+        border: 1px solid black;
+      }
+
+      .button {
+        display: block;
+        text-decoration: none;
+        color: black;
+        background-color: rgb(31, 199, 131);
+        margin: 15px 25px;
+        text-align: center;
+        font-size: 22px;
+        padding: 10px 20px;
+        border-radius: 7px;
+      }
+      .button:hover {
+        background-color: rgb(63, 112, 210);
+      }
+
+      .card-container {
+        margin: 20px;
+      }
+
+      .selected {
+        border: green 5px solid;
+      }
+
+      .card-image {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div>Задача 5</div>
+      <p>
+        Відображаємо картки товарів, які користувач може вибирати. Вибраний
+        товар має зелену рамку (при кліку робити toogle з класом вибраного
+        елемента)
+      </p>
+    </div>
+    <div class="content">
+      <p>Відповідь до задачі:</p>
+      <script>
+        class Card {
+          constructor({ imgSrc, title, price }) {
+            this.imgSrc = imgSrc
+            this.title = title
+            this.price = price
+          }
+          render(containerSelector) {
+            const container = document.createElement('div')
+            container.className = 'card-container'
+
+            const imgContainer = document.createElement('div')
+            imgContainer.className = 'img-container'
+            container.append(imgContainer)
+
+            const img = document.createElement('img')
+            img.setAttribute('src', this.imgSrc)
+            img.className = 'card-image'
+            imgContainer.append(img)
+
+            const cardTitle = document.createElement('div')
+            cardTitle.className = 'card-title'
+            cardTitle.innerText = this.title
+            container.append(cardTitle)
+
+            const cardPrice = document.createElement('div')
+            cardPrice.className = 'card-price'
+            cardPrice.innerText = this.price
+            container.append(cardPrice)
+
+            if (containerSelector)
+              document.querySelector(containerSelector).append(container)
+
+            container.addEventListener('click', () => {
+              container.classList.toggle('selected')
+            })
+            return container
+          }
+        }
+        //----------------------------------------------------------
+        const cards = [
+          {
+            imgSrc: './images/asusstrix.png',
+            title: 'Asus Strix g15',
+            price: '39999 грн',
+          },
+          {
+            imgSrc: './images/lenovolegion.png',
+            title: 'Lenovo Legion 5',
+            price: '57999 грн',
+          },
+          {
+            imgSrc: './images/msi.png',
+            title: 'MSI GS77',
+            price: '47999 грн',
+          },
+        ]
+        window.onload = function () {
+          for (const card of cards) {
+            new Card(card).render('.cards')
+          }
+        }
+      </script>
+      <div class="cards"></div>
+    </div>
+    <div class="btn">
+      <a class="button" href="./index.html">На головну</a>
+    </div>
+  </body>
+</html>

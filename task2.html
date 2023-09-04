@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 2</title>
+    <style>
+      body {
+        background-color: lightgray;
+        font-size: 20px;
+        font-family: 'Times New Roman', Times, serif;
+      }
+      .header {
+        max-width: 1425px;
+        margin: 0 auto;
+        background-color: rgb(31, 199, 131);
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 30px;
+      }
+      .header > p {
+        font-size: 24px;
+      }
+      .content {
+        max-width: 350px;
+        margin: 10px auto;
+        background-color: rgb(31, 199, 131);
+        border-radius: 10px;
+        text-align: center;
+        padding: 5px 0;
+        font-size: 24px;
+      }
+
+      button {
+        text-decoration: none;
+        color: black;
+        background-color: rgb(167, 209, 211);
+        text-align: center;
+        font-size: 18px;
+        padding: 7px 14px;
+        border-radius: 7px;
+      }
+
+      input {
+        text-decoration: none;
+        color: black;
+        background-color: rgb(167, 209, 211);
+        margin: 14px 0px;
+        font-size: 15px;
+        padding: 7px 14px;
+        border-radius: 7px;
+      }
+
+      .btn {
+        max-width: 300px;
+        margin: 30px auto;
+      }
+      .button {
+        display: block;
+        text-decoration: none;
+        color: black;
+        background-color: rgb(31, 199, 131);
+        margin: 15px 25px;
+        text-align: center;
+        font-size: 22px;
+        padding: 10px 20px;
+        border-radius: 7px;
+      }
+      .button:hover {
+        background-color: rgb(63, 112, 210);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div>Задача 2</div>
+      <p>
+        Дано 5 елементів input. При введенні значення у якийсь із них необхідно
+        автоматично заповнювати інші усі попередні у спадному порядку(кожен
+        попередній має значення на 1 менше за наступний), усі наступні на 1
+        більше (кожен наступне на 1 більше за попереднього)
+      </p>
+    </div>
+    <div class="content">
+      <p>Відповідь до задачі:</p>
+      <script>
+        function changeValue() {
+          let thisInput = this
+          let thisValue = parseFloat(thisInput.children[0].value)
+          while (thisInput.nextElementSibling) {
+            thisInput = thisInput.nextElementSibling
+            thisInput.children[0].value = thisValue += 1
+          }
+          while (thisInput.previousElementSibling) {
+            thisInput = thisInput.previousElementSibling
+            thisInput.children[0].value = thisValue -= 1
+          }
+        }
+        window.onload = function () {
+          const label = document.getElementsByClassName('label')
+          for (const input of label) {
+            input.oninput = changeValue
+          }
+        }
+      </script>
+      <label class="label"
+        >Value 1
+        <input type="number" />
+      </label>
+      <label class="label"
+        >Value 2
+        <input type="number" />
+      </label>
+      <label class="label"
+        >Value 3
+        <input type="number" />
+      </label>
+      <label class="label"
+        >Value 4
+        <input type="number" />
+      </label>
+      <label class="label"
+        >Value 5
+        <input type="number" />
+      </label>
+    </div>
+    <div class="btn">
+      <a class="button" href="./index.html">На головну</a>
+    </div>
+  </body>
+</html>

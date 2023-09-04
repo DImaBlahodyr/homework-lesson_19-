@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 1</title>
+    <style>
+      body {
+        background-color: lightgray;
+        font-size: 20px;
+        font-family: 'Times New Roman', Times, serif;
+      }
+      .header {
+        max-width: 1425px;
+        margin: 0 auto;
+        background-color: rgb(31, 199, 131);
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+        font-size: 30px;
+      }
+      .header > p {
+        font-size: 24px;
+      }
+      .content {
+        max-width: 950px;
+        margin: 10px auto;
+        background-color: rgb(31, 199, 131);
+        border-radius: 10px;
+        text-align: center;
+        padding: 5px 0;
+        font-size: 24px;
+      }
+
+      button {
+        text-decoration: none;
+        color: black;
+        background-color: rgb(167, 209, 211);
+        text-align: center;
+        font-size: 18px;
+        padding: 7px 14px;
+        border-radius: 7px;
+      }
+
+      input {
+        text-decoration: none;
+        color: black;
+        background-color: rgb(167, 209, 211);
+        margin: 14px 0px;
+        font-size: 15px;
+        padding: 7px 14px;
+        border-radius: 7px;
+      }
+
+      .btn {
+        max-width: 300px;
+        margin: 30px auto;
+      }
+      .button {
+        display: block;
+        text-decoration: none;
+        color: black;
+        background-color: rgb(31, 199, 131);
+        margin: 15px 25px;
+        text-align: center;
+        font-size: 22px;
+        padding: 10px 20px;
+        border-radius: 7px;
+      }
+      .button:hover {
+        background-color: rgb(63, 112, 210);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div>Задача 1</div>
+      <p>
+        Дано 10 рядків тексту «Hello!» у окремих div. При кліку на якийсь із них
+        усі наступні повинні бути зафарбовані у червоний колір.
+      </p>
+    </div>
+    <div class="content">
+      <p>Відповідь до задачі:</p>
+      <script>
+        function userClick() {
+          let thisDivs = this
+          while (thisDivs.nextElementSibling) {
+            thisDivs = thisDivs.nextElementSibling
+            thisDivs.style.backgroundColor = 'red'
+          }
+        }
+        window.onload = function () {
+          const divs = document.getElementsByClassName('hello')
+          for (const div of divs) {
+            div.onclick = userClick
+          }
+        }
+      </script>
+      <div class="hello">Hello!</div>
+      <div class="hello">Hello!</div>
+      <div class="hello">Hello!</div>
+      <div class="hello">Hello!</div>
+      <div class="hello">Hello!</div>
+      <div class="hello">Hello!</div>
+      <div class="hello">Hello!</div>
+      <div class="hello">Hello!</div>
+      <div class="hello">Hello!</div>
+      <div class="hello">Hello!</div>
+    </div>
+
+    <div class="btn">
+      <a class="button" href="./index.html">На головну</a>
+    </div>
+  </body>
+</html>
